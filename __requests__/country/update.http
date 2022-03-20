@@ -1,0 +1,29 @@
+# Update country name
+POST http://localhost:8080/country/update
+Content-Type: application/json
+
+{
+  "name": "Turkey",
+  "id": 1
+}
+
+###
+# Update country language
+POST http://localhost:8080/country/update
+Content-Type: application/json
+
+{
+  "langCode": "tr-TR",
+  "id": 1
+}
+
+###
+# Update country language and name
+POST http://localhost:8080/country/update
+Content-Type: application/json
+
+{
+  "name": "Turkey",
+  "langCode": "tr-TR",
+  "id": 1
+}

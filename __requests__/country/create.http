@@ -1,0 +1,7 @@
+POST http://localhost:8080/country/create
+Content-Type: application/json
+
+{
+  "name": "Azerbaijan",
+  "langCode": "az-AZ"
+}

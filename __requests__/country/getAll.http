@@ -1,0 +1,26 @@
+# No filter
+POST http://localhost:8080/country/getAll
+Content-Type: application/json
+
+{}
+
+###
+# Custom page, custom limit, custom order, custom sort
+POST http://localhost:8080/country/getAll
+Content-Type: application/json
+
+{
+  "page": 2,
+  "limit": 10,
+  "order": "lang_code",
+  "sort": "asc"
+}
+
+###
+# Filter countries by name
+POST http://localhost:8080/country/getAll
+Content-Type: application/json
+
+{
+  "query": "us"
+}
