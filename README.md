@@ -177,7 +177,7 @@ You can delete country with this endpoint.
 | **limit**  | *false*     | integer | 20      |
 | **order**  | *false*     | string  | *name*  |
 | **sort**   | *false*     | string  | *desc*  |
-| **filter** | *false*     | string  | -       |
+| **query**  | *false*     | string  | -       |
 
 
 <br>
