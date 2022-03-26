@@ -32,9 +32,44 @@ class Database
         return $this->query;
     }
 
-    public function select(string $dbname, string $query = "*"): Database
+    public function select(string $tableName, string $query = "*"): Database
     {
-        $this->query = "SELECT " . $query . " FROM " . $dbname;
+        $this->query = "SELECT " . $query . " FROM " . $tableName;
+        return $this;
+    }
+
+    public function innerJoin(string $tableName): Database
+    {
+        $this->query = $this->query . " INNER JOIN " . $tableName;
+        return $this;
+    }
+
+    public function leftJoin(string $tableName): Database
+    {
+        $this->query = $this->query . " LEFT JOIN " . $tableName;
+        return $this;
+    }
+
+    public function rightJoin(string $tableName): Database
+    {
+        $this->query = $this->query . " RIGHT JOIN " . $tableName;
+        return $this;
+    }
+
+    /**
+     * @for innerJoin, leftJoin, rightJoin
+     */
+    public function on(string $condition, bool $and = true): Database
+    {
+        if (str_contains($this->query, " ON")) {
+            if ($and) {
+                $this->query = $this->query . " AND " . $condition;
+            } else {
+                $this->query = $this->query . ' OR ' . $condition;
+            }
+        } else {
+            $this->query = $this->query . " ON " . $condition;
+        }
         return $this;
     }
 
@@ -71,7 +106,13 @@ class Database
      */
     public function like(string $query): Database
     {
-        $this->query = $this->query . " LIKE ".$query;
+        $this->query = $this->query . " LIKE " . $query;
+        return $this;
+    }
+
+    public function groupBy(string $field): Database
+    {
+        $this->query = $this->query . " GROUP BY " . $field;
         return $this;
     }
 
@@ -128,7 +169,7 @@ class Database
      */
     public function columns(string $columns): Database
     {
-        $this->query = $this->query . " (" . $columns.")";
+        $this->query = $this->query . " (" . $columns . ")";
         return $this;
     }
 
@@ -137,7 +178,7 @@ class Database
      */
     public function values(string $values): Database
     {
-        $this->query = $this->query . " VALUES (" . $values.")";
+        $this->query = $this->query . " VALUES (" . $values . ")";
         return $this;
     }
 
@@ -147,12 +188,12 @@ class Database
         return $this;
     }
 
-    public function set(string $field, string $value) : Database
+    public function set(string $field, string $value): Database
     {
-        if(str_contains($this->query, "SET")) {
-            $this->query = $this->query.", ".$field." = '".$value."'";
-        }else {
-            $this->query = $this->query." SET ".$field." = '".$value."'";
+        if (str_contains($this->query, "SET")) {
+            $this->query = $this->query . ", " . $field . " = '" . $value . "'";
+        } else {
+            $this->query = $this->query . " SET " . $field . " = '" . $value . "'";
         }
         return $this;
     }
@@ -169,7 +210,7 @@ class Database
     /**
      * @for SELECT
      */
-    public function fetch() : mixed
+    public function fetch(): mixed
     {
         $statement = $this->pdo->prepare($this->query);
         $statement->execute();
@@ -179,7 +220,7 @@ class Database
     /**
      * @for SELECT
      */
-    public function fetchAll() : array
+    public function fetchAll(): array
     {
         $statement = $this->pdo->prepare($this->query);
         $statement->execute();

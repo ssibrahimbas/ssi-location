@@ -1,0 +1,8 @@
+POST http://localhost:8080/city/create
+Content-Type: application/json
+
+{
+  "name": "Istanbul",
+  "countryId": 1,
+  "plateCode": 34
+}

@@ -1,0 +1,38 @@
+# No filter
+POST http://localhost:8080/city/getAll
+Content-Type: application/json
+
+{}
+
+###
+# Custom page, custom limit, custom order, custom sort
+POST http://localhost:8080/city/getAll
+Content-Type: application/json
+
+{
+  "page": 2,
+  "limit": 10,
+  "order": "plate_code",
+  "sort": "asc"
+}
+
+###
+
+# Filter cities by name
+POST http://localhost:8080/city/getAll
+Content-Type: application/json
+
+{
+  "query": "ist"
+}
+
+###
+
+# Filter by countryId
+POST http://localhost:8080/city/getAll
+Content-Type: application/json
+
+{
+  "query": "ist",
+  "countryId": 1
+}

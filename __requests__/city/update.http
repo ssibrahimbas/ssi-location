@@ -1,0 +1,29 @@
+# Update city name
+POST http://localhost:8080/city/update
+Content-Type: application/json
+
+{
+  "name": "Ankara",
+  "id": 1
+}
+
+###
+# Update city plate code
+POST http://localhost:8080/city/update
+Content-Type: application/json
+
+{
+  "plateCode": 6,
+  "id": 1
+}
+
+###
+# Update city plate code and name
+POST http://localhost:8080/city/update
+Content-Type: application/json
+
+{
+  "name": "Ankara",
+  "plateCode": 6,
+  "id": 1
+}
