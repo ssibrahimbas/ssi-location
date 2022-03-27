@@ -4,6 +4,8 @@ use global\Validation;
 use global\ErrorResult;
 use global\SuccessResult;
 
+session_start();
+if(!$sessionService->checkAuthorization()) return;
 if(!$requestHelper->getJSONRaw(true)) return;
 
 $validator = new Validation();

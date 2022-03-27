@@ -4,16 +4,19 @@ use global\ResultHelper;
 use global\RequestHelper;
 use global\Database;
 use global\Helper;
+use global\SessionService;
 
 include $_SERVER['DOCUMENT_ROOT']."/helper/requestHelper.php";
 include $_SERVER['DOCUMENT_ROOT']."/helper/resultHelper.php";
 include $_SERVER['DOCUMENT_ROOT']."/validation/Validation.php";
 include $_SERVER['DOCUMENT_ROOT']."/config/Database.php";
 include $_SERVER["DOCUMENT_ROOT"]."/helper/baseHelper.php";
+include $_SERVER["DOCUMENT_ROOT"]."/services/sessionService.php";
 
-$db = (new Database());
+$db = new Database();
 $resultHelper = new ResultHelper();
 $requestHelper = new RequestHelper($resultHelper);
+$sessionService = new SessionService($resultHelper);
 $requestHelper->useJSON();
 $requestHelper->usePowered();
 $helper = new Helper();

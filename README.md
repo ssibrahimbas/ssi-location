@@ -52,6 +52,14 @@ You can add country with this endpoint.
 > }
 > ```
 
+> Authorization Error
+>
+> ```json
+> {
+>     "success": false,
+>     "message": "You must be logged in to access this page"
+> }
+> ```
 
 #### Example Requests
 
@@ -99,6 +107,14 @@ Note: you just have to submit the field you want to update. If the name and lang
 > }
 > ```
 
+> Authorization Error
+>
+> ```json
+> {
+>     "success": false,
+>     "message": "You must be logged in to access this page"
+> }
+> ```
 
 #### Example Requests
 
@@ -258,6 +274,15 @@ You can delete country with this endpoint.
 > }
 > ```
 
+> Authorization Error
+>
+> ```json
+> {
+>     "success": false,
+>     "message": "You must be logged in to access this page"
+> }
+> ```
+
 
 #### Example Requests
 
@@ -311,6 +336,14 @@ You can add city with this endpoint.
 > }
 > ```
 
+> Authorization Error
+>
+> ```json
+> {
+>     "success": false,
+>     "message": "You must be logged in to access this page"
+> }
+> ```
 
 #### Example Requests
 
@@ -355,6 +388,15 @@ Note: you just have to submit the field you want to update. If the name and plat
 > {
 >    "success": false,
 >    "message": "Change not detected."
+> }
+> ```
+
+> Authorization Error
+>
+> ```json
+> {
+>     "success": false,
+>     "message": "You must be logged in to access this page"
 > }
 > ```
 
@@ -526,9 +568,175 @@ You can delete city with this endpoint.
 > }
 > ```
 
+> Authorization Error
+>
+> ```json
+> {
+>     "success": false,
+>     "message": "You must be logged in to access this page"
+> }
+> ```
+
 
 #### Example Requests
 
 look at __requests__ folder for example requests.
 
+</details>
+
+<br>
+
+<details>
+<summary>Register</summary>
+
+You can get register to this app with this endpoint.
+
+<br>
+
+#### Parameters
+
+| Parameter     | Is Required | Type   | Default                             |
+|---------------|-------------|--------|-------------------------------------|
+| **email**     | *false*     | string | **info@samisalihibrahimbas.com.tr** |
+| **password**  | *false*     | string | **12345**                           |
+
+
+<br>
+
+#### Returns
+
+> is success
+>
+> ```json
+> {
+>   "success": true,
+>   "message": "User register successfully"
+> }
+> ```
+
+> already exists
+> 
+> 
+> ```json
+> {
+>     "success": false,
+>     "message": "User already exists."
+> }
+> ```
+
+> Validation Error
+>
+> ```json
+> {
+>    "success": false,
+>    "message": "Validation Error",
+>    "data": [
+>       {
+>          "field": "email",
+>          "message": "email field is required"
+>       },
+>       {
+>          "field": "password",
+>          "message": "password field is required"
+>       }
+>    ]
+> }
+> ```
+
+</details>
+
+<br>
+
+<details>
+<summary>Log In</summary>
+
+You can get login to this app with this endpoint.
+
+<br>
+
+#### Parameters
+
+| Parameter     | Is Required | Type   | Default                             |
+|---------------|-------------|--------|-------------------------------------|
+| **email**     | *false*     | string | **info@samisalihibrahimbas.com.tr** |
+| **password**  | *false*     | string | **12345**                           |
+
+
+<br>
+
+#### Returns
+
+
+> is success
+>
+> ```json
+> {
+>     "success": true,
+>     "message": "Successfully logged in",
+>     "data": {
+>         "email": "info@samisalihibrahimbas.com.tr",
+>         "createdAt": "2022-03-27"
+>     }
+> }
+> ```
+
+> not found
+>
+>
+> ```json
+> {
+>     "success": false,
+>     "message": "User not found."
+> }
+> ```
+
+> Validation Error
+>
+> ```json
+> {
+>    "success": false,
+>    "message": "Validation Error",
+>    "data": [
+>       {
+>          "field": "email",
+>          "message": "email field is required"
+>       },
+>       {
+>          "field": "password",
+>          "message": "password field is required"
+>       }
+>    ]
+> }
+> ```
+
+</details>
+
+<br>
+
+<details>
+<summary>Log Out</summary>
+
+You can get log out from this app with this endpoint.
+
+<br>
+
+#### Returns
+
+> Authorization Error
+>
+> ```json
+> {
+>     "success": false,
+>     "message": "You must be logged in to access this page"
+> }
+> ```
+
+> is success
+>
+> ```json
+> {
+>     "success": true,
+>     "message": "Successfully Signed out"
+> }
+> ```
 </details>
